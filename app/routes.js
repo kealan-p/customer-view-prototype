@@ -2073,9 +2073,11 @@ router.post('/get-a-proof-of-benefit-letter/multi-benefits-answer', function (re
     // Send user to single address page
     res.redirect('/get-a-proof-of-benefit-letter/is-your-home-address-correct');
 
-  } else {
-    // Send to you can't get proof for all benefits.
+  } else if (whichBenefitNeedProof.includes("I need a letter for another benefit")) {
+    // Sends you to `you can't get proof for all benefits.`
     res.redirect('/get-a-proof-of-benefit-letter/you-cannot-get-proof-of-all-your-benefits');
+  } else {
+    res.redirect('/get-a-proof-of-benefit-letter/is-your-home-address-correct.html');
   }
 
 })
